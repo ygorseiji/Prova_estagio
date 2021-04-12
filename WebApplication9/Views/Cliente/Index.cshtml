@@ -1,0 +1,55 @@
+﻿@model IEnumerable<WebApplication9.Models.Cliente>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Tela Cliente</h1> 
+
+<p>
+    <a asp-action="NovoCliente" class="btn btn-success">Criar Novo Cliente</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Nome
+            </th>
+            <th>
+                Tipo de Pessoa (PF ou PJ)
+            </th>
+            <th>
+                Codigo do Vendedor
+            </th>
+            <th>
+                Limite de Compra
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DSNOME)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IDTIPO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CDVEND)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DSLIM)
+            </td>
+            <td> 
+                <a asp-action="AtualizarCliente" asp-route-clienteID="@item.CDCL" class="btn btn-primary">Edit</a> |
+                <form asp-action="ExcluirCliente" asp-route-clienteID="@item.CDCL">
+                    <button type="submit" class="btn badge-danger">Excluir</button>
+                </form>
+
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

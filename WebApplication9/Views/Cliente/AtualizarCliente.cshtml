@@ -1,0 +1,49 @@
+﻿@model WebApplication9.Models.Cliente
+
+@{
+    ViewData["Title"] = "AtualizarCliente";
+}
+
+<h1>AtualizarCliente</h1>
+
+<h4>Cliente</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AtualizarCliente">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="CDCL" />
+            <div class="form-group">
+                <label asp-for="DSNOME" class="control-label"></label>
+                <input asp-for="DSNOME" class="form-control" />
+                <span asp-validation-for="DSNOME" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IDTIPO" class="control-label"></label>
+                <input asp-for="IDTIPO" class="form-control" />
+                <span asp-validation-for="IDTIPO" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CDVEND" class="control-label"></label>
+                <input asp-for="CDVEND" class="form-control" />
+                <span asp-validation-for="CDVEND" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DSLIM" class="control-label"></label>
+                <input asp-for="DSLIM" class="form-control" />
+                <span asp-validation-for="DSLIM" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

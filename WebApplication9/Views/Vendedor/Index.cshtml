@@ -1,0 +1,49 @@
+﻿@model IEnumerable<WebApplication9.Models.Vendedor>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Tela Vendedor</h1>
+
+<p>
+    <a asp-action="NovoVendedor" class="btn btn-success">Criar novo vendedor</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Nome
+            </th>
+            <th>
+                Tabela de preço padrões
+            </th>
+            <th>
+                Data de Nascimento
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DSNOME)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CDTAB)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DTNASC)
+            </td>
+            <td>
+                <a asp-action="AtualizarVendedor" asp-route-vendedorID="@item.CDVEND" class="btn btn-primary">Edit</a> |
+                <a asp-action="ListarClientes" asp-route-vendedorID="@item.CDVEND" class="btn btn-primary">Clientes</a> |
+                <form asp-action="ExcluirVendedor" asp-route-vendedorID="@item.CDVEND">
+                    <button type="submit" class="btn badge-danger">Excluir</button>
+                </form>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
